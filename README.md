@@ -65,12 +65,6 @@ admin = Employee(user=user, salary=0)
 admin.save()
 ```
 
-3. In order to work mail system (In some case system sends e-mails):
-* Go to the HMS/setting.py
-* Under of the file mail settings are as command lines. Put out of them from command and change the setting according to your mail address
-
-## Note: In the program, there are some payment page. No need to enter real credit-card informations. The payment page just for the system, it doesnt work. However; after these page, a verification code is sent the user mail address
-
 ### Finally:
 * Exit the shell and set the database: 
 ```shell
@@ -82,3 +76,18 @@ Then, start the surver
 python3 manage.py runserver
 ```
 * This will work if correctly set up.
+
+## Notes:
+#### Note1: In the program, there are some payment page. No need to enter real credit-card informations. The payment page just for the system, it doesnt work. However; after these page, a verification code is sent the user mail address.
+
+
+#### Note 2: You can only sign up as a guest to the system. In order to add employee (Manager - Receptionist - Staff): 
+* login in to the system with username: "admin" and password : "admin123"
+* Go the employee page on options in navbar.
+* Click "Add New Employee" button, fill the form and send it.
+* You will see the success message. After then, you can use that employee to enter the system 
+
+
+#### Note 3: For the mail system works (In some case system sends e-mails):
+* Go to the HMS/setting.py
+* Under of the file mail settings are as command lines. Put out of them from command and change the setting according to your mail address
