@@ -1,9 +1,10 @@
 # Django - Hotel Management System
-* Requirement Analysis Document - System Design Document - Object Design Document are in the "Documents" Folder <br>
+* Requirement Analysis Document - System Design Document - Object Design Document are in the "Documents" Folder
 
 It is hotel management system which have 5 different user types: <br>
-Admin - Manager - Receptionist - Staff - Guest  (Each of the types have different functionality.) <br>
+Admin - Manager - Receptionist - Staff - Guest  (Each of the types have different functionality.) 
 
+### There are some screenshots of the program on "Screenshots" folder.
 
 ### In order to download and run the project ( It is assumed that Python 3 is already installed ):
 1. Install Django and Apps:
@@ -78,11 +79,11 @@ python3 manage.py runserver
 * This will work if correctly set up.
 
 ## Notes:
-#### Note1: In the program, there are some payment page. No need to enter real credit-card informations. The payment page just for the system, it doesnt work. However; after these page, a verification code is sent the user mail address.
+#### Note 1: In the program, there are some payment page. No need to enter real credit-card informations. The payment page just for the system, it doesnt work. However; after these page, a verification code is sent the user mail address.
 
 
 #### Note 2: You can only sign up as a guest to the system. In order to add employee (Manager - Receptionist - Staff): 
-* login in to the system with username: "admin" and password : "admin123"
+* Login in to the system with username: "admin" and password : "admin123"
 * Go the employee page on options in navbar.
 * Click "Add New Employee" button, fill the form and send it.
 * You will see the success message. After then, you can use that employee to enter the system 
