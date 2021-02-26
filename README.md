@@ -11,12 +11,12 @@ Admin - Manager - Receptionist - Staff - Guest  (Each of the types have differen
 pip install Django==3.1.4
 pip install django-phonenumber-field[phonenumbers]
 ```
+## Needed to create roles and admin account to add new employee accounts
 2. Change Directory to Django---Hotel-Management-System/HMS and start the Shell:
-* Firstly, needed to create roles and admin account to add new employee accounts
 ```shell
 python3 manage.py shell
 ```
-* Then execute these one by one:
+* Then execute these, one by one:
 ```shell
 from django.contrib.auth.models import Group, User
 ```
