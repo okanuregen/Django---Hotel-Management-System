@@ -1,5 +1,5 @@
 # Django - Hotel Management System
-* Requirement Analysis Document - System Design Document - Object Design Document are in the "Documents" Folder
+* Requirement Analysis Document - System Design Document - Object Design Document - Mockups - Class Diagram - ER Diagram are in the "Documents" Folder
 
 * It is hotel management system which have 5 different user types: <br>
 Admin - Manager - Receptionist - Staff - Guest  (Each of the types have different functionality.) 
