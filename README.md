@@ -4,7 +4,7 @@
 It is hotel management system which have 5 different user types: <br>
 Admin - Manager - Receptionist - Staff - Guest  (Each of the types have different functionality.) 
 
-### There are some screenshots of the program on "Screenshots" folder.
+There are some screenshots of the program on "Screenshots" folder.
 
 ### In order to download and run the project ( It is assumed that Python 3 is already installed ):
 1. Install Django and Apps:
