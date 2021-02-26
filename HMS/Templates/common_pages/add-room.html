@@ -1,0 +1,41 @@
+<div class="container clearfix shadow-lg p-5 my-5">
+    <form action="" method="POST" class="my-5">
+        {% csrf_token %}
+
+        <div class="row mt-5">
+            <div class="col-6">
+                <div class="form-group pt-3">
+                    <label for="item-type"><b>Room Number: </b></label>
+                    <input type="number" class="form-control border border-secondary" id="item-type" name="number" />
+                </div>
+
+                <div class="form-group">
+                    <label for="item-quantity"><b>Number Of Beds: </b></label>
+                    <input type="number" class="form-control border border-secondary" id="item-quantity" name="beds" />
+                </div>
+
+                <div class="form-group">
+                    <label for="item-quantity"><b>Price: </b></label>
+                    <input type="number" class="form-control border border-secondary" id="item-quantity" name="price" />
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="form-group pt-3">
+                    <label for="item-type"><b>Capacity: </b></label>
+                    <input type="number" min="0" class="form-control border border-secondary" id="item-type"
+                        name="capacity" />
+                </div>
+
+                <div class="form-group">
+                    <label for="item-quantity"><b>Room Type:</b></label>
+                    <input type="int" class="form-control border border-secondary" id="item-quantity" name="type" />
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success px-4 float-right">
+            Add Room
+        </button>
+    </form>
+</div>
+<div class="clearfix my-5 py-1">&nbsp;</div>

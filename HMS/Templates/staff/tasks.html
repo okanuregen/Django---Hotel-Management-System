@@ -1,0 +1,54 @@
+{% extends '../index.html' %}
+
+{% block context %}
+
+<div class="container py-5">
+
+    <div class="table-header row">
+
+        <div class="col-sm-12 col-md-12 col-lg-4 mb-4">
+            <h2>My Tasks List</h2>
+        </div>
+
+    </div>
+    <table class="table table-hover table-striped">
+        <thead class="bg-secondary rounded">
+            <tr>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <th>Task ID <input type="number" name="id" value="{{id}}"
+                            class="form-control border border-secondary"></th>
+                    <th>Description <input type="text" name="desc" value="{{desc}}"
+                            class="form-control border border-secondary"></th>
+                    <th>Start Time <input type="date" name="fd" value="{{fd}}"
+                            class="form-control border border-secondary"></th>
+                    <th>End Time <input type="date" name="ed" value="{{ed}}"
+                            class="form-control border border-secondary"></th>
+                    <th><button type="submit" name="filter" class="btn btn-warning w-100">Filter</button></th>
+                </form>
+            </tr>
+        </thead>
+        <tbody>
+            {% for t in tasks %}
+            <tr>
+                <td>{{t.id}}</td>
+                <td>{{t.description}}</td>
+                <td>{{t.startTime}}</td>
+                <td>{{t.endTime}}</td>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="tid" value="{{ t.id }}">
+                    <td><a type="submit" name="markAsComplete" class="btn btn-sm btn-success w-100"
+                            href="{% url 'completeTask' t.id %}">Mark&nbsp;As&nbsp;Complete</a></td>
+
+                </form>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+
+
+
+</div>
+{% endblock %}

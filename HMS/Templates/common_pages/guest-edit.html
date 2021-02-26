@@ -1,0 +1,59 @@
+<div class="container">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="row mt-5">
+
+            <div class="col-6">
+
+                <div class="form-group pt-3">
+                    <label for="item-type"><b>Name</b></label>
+                    <input type="text" class="form-control border border-secondary" id="id_first_name" name="first_name"
+                        value="{{guest.user.first_name}}">
+                </div>
+
+                <div class="form-group">
+                    <label for="item-quantity"><b>Email</b></label>
+                    <input type="int" class="form-control border border-secondary" name="email" id="id_email"
+                        value="{{guest.user.email}}">
+                </div>
+
+            </div>
+
+            <div class="col-6">
+
+                <div class="form-group pt-3">
+                    <label for="item-type"><b>Phone Number</b></label>
+                    <input type="text" class="form-control border border-secondary" name="phoneNumber"
+                        id="id_phoneNumber" value="{{guest.phoneNumber}}">
+                </div>
+                <button type="submit" class="btn btn-outline-success btn-lg">Save Changes</button>
+            </div>
+        </div>
+
+    </form>
+
+    <br><br>
+
+    <div class="row ml-2s">
+        <ul class="list-group">
+            <h4>List of Dependee Names</h4>
+            <form>
+                {% comment %} {% for dependee in dependees%} {% endcomment %}
+                {% comment %} {{dependee.name}} {% endcomment %}
+                {% comment %} {% endfor %} {% endcomment %}
+            </form>
+
+        </ul>
+    </div>
+
+    <br>
+
+    <div class="float-right">
+
+    </div>
+
+    <div class="py-3">
+        &nbsp
+    </div>
+
+</div>

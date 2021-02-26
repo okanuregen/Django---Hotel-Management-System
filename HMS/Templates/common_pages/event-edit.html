@@ -1,0 +1,85 @@
+<div class="container">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="row mt-5">
+            <div class="col-6  border-right pr-5">
+
+                <div class="form-group row">
+                    <label for="item-type" class="col-sm-3 col-form-label h4">Event Type:</label>
+                    <div class="col-sm-9">
+                        <select name="eventType" required="" id="id_eventType" class="form-control">
+                            <option value="Movie" {% if event.eventType == 'Movie' %} selected="" {% endif %}>Movie
+                            </option>
+
+                            <option value="Theater" {% if event.eventType == 'Theater' %} selected="" {% endif %}>
+                                Theater
+                            </option>
+
+                            <option value="Conference" {% if event.eventType == 'Conference' %} selected="" {% endif %}>
+                                Conference</option>
+
+                            <option value="Concert" {% if event.eventType == 'Concert' %} selected="" {% endif %}>
+                                Concert
+                            </option>
+
+                            <option value="Entertainment" {% if event.eventType == 'Entertainment' %} selected=""
+                                {% endif %}>Entertainment</option>
+
+                            <option value="Live Music" {% if event.eventType == 'Live Music' %} selected="" {% endif %}>
+                                Live Music</option>
+
+                        </select>
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="form-group row">
+                    <label for="item-type" class="col-sm-3 col-form-label h4">Start Date:</label>
+                    <div class="col-sm-9">
+                        <input type="date" class="form-control" id="id_startDate" name="startDate"
+                            value="{{ event.startDate|date:'Y-m-d'}}">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-6 pl-5">
+
+                <div class="form-group row">
+                    <label for="item-type" class="col-sm-3 col-form-label h4">Location:</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="id_location" name="location"
+                            value="{{event.location}}">
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="form-group row">
+                    <label for="item-type" class="col-sm-3 col-form-label h4">End Date:</label>
+                    <div class="col-sm-9">
+                        <input type="date" class="form-control" id="id_endDate" name="endDate"
+                            value="{{ event.endDate|date:'Y-m-d' }}">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <br>
+
+        <div class="explanation py-5 border-top border-secondary">
+            <div class="header h2 border rounded p-4">Explanation</div>
+            <div class="content">
+                <div class="form-group">
+                    <textarea class="form-control" id="id_explanation" name="explanation" rows="8">
+                    {{ event.explanation }}
+                    </textarea>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success btn-lg px-5 float-right">Save</button>
+        </div>
+
+    </form>
+</div>

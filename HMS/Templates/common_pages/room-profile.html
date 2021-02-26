@@ -1,0 +1,121 @@
+<div class="container">
+    <div class="shadow-lg p-5">
+
+        <div class="row mt-5">
+
+            <div class="col-6">
+
+                <div class="p-2 h4">
+                    <span>Room Number:</span>
+                    <span class="font-weight-normal">{{room.number}}</span>
+                </div>
+
+                <div class="p-2 h4">
+                    <span>Number Of Beds:</span>
+                    <span class="font-weight-normal">{{room.numberOfBeds}}</span>
+                </div>
+
+                <div class="p-2 h4">
+                    <span>Price:</span>
+                    <span class="font-weight-normal">{{room.price}}</span>
+                </div>
+
+                <div class="p-2 h4">
+                    <span>Room Type:</span>
+                    <span class="font-weight-normal">{{ room.roomType }}</span>
+
+                </div>
+
+                <div class="p-2 h4">
+                    <span>Capacity: </span>
+                    <span class="font-weight-normal">{{room.capacity}}</span>
+
+                </div>
+
+            </div>
+
+            <div class="col-6">
+
+
+
+                {% if role == "manager" or role == "admin" %}
+                <div class="p-2 h4 ">
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <input type="date" placeholder="Enter Start Date" name="bsd" required
+                            class="form-control w-50 mb-2">
+                        <input type="date" placeholder="Enter End Date" name="bed" required
+                            class="form-control w-50 mb-2">
+                        <button name="lockRoom" type="submit" class="btn btn-info w-50">Lock This Room</button>
+                        <br>
+
+                    </form>
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <hr>
+                        {% if room.statusStartDate != None %}
+                        <div>
+                            This room is closed in between: <br>
+                            from {{room.statusStartDate}} <br>
+                            to {{room.statusEndDate}}
+                            <br>
+                            <hr>
+                            <button name="unlockRoom" type="submit" class="btn btn-info w-50">Unlock This Room</button>
+                        </div>
+                        {% endif %}
+
+                        <div id="messages">
+                            {% for m in messages %}
+
+                            <div class="alert alert-danger">{{m}}</div>
+
+                            {% endfor %}
+                        </div>
+                    </form>
+                </div>
+                {% endif %}
+                <br>
+
+
+
+            </div>
+        </div>
+        <br>
+
+        <div class="table-responsive table-striped my-5">
+            <div class="table-header row">
+
+                <div class="col-sm-12 col-md-12 col-lg-4 mb-4">
+                    <h5>This room has these reservations</h5>
+                </div>
+
+            </div>
+
+            <table class="table table-hover table-striped">
+                <thead class="bg-secondary rounded">
+                    <tr>
+                        {% if role != 'guest' %} <th>Guest Name</th> {% endif %}
+                        <th>From </th>
+                        <th>To</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for bo in bookings %}
+                    <tr>
+                        {% if role != 'guest' %} <td><a href="{% url 'guest-profile' bo.guest.user.id %}">
+                                {{bo.guest.user.first_name}}
+                                {{bo.guest.user.last_name}}</a></td>
+                        {%endif %}
+                        <td>{{bo.startDate}}</td>
+                        <td>{{bo.endDate}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,78 @@
+
+<div class="container">
+
+
+    <div class="row mt-5">
+        <div class="col-6">
+
+            <div class="p-2 h4">
+                <span>Event Type: </span>
+                <span class="font-weight-normal">{{event.eventType}}</span>
+            </div>
+
+            <br>
+
+            <div class="p-2 h4">
+                <span>Start Date:</span>
+                <span class="font-weight-normal">{{event.startDate}}</span>
+            </div>
+
+        </div>
+
+        <div class="col-6">
+
+            <div class="p-2 h4">
+                <span>Location:</span>
+                <span class="font-weight-normal">{{event.location}}</span>
+            </div>
+
+            <br>
+
+            <div class="p-2 h4">
+                <span>End Date:</span>
+                <span class="font-weight-normal">{{event.endDate}}</span>
+            </div>
+
+        </div>
+    </div>
+
+    <br>
+
+    <div class="table-responsive my-5 border-top border-secondary pt-5">
+        <div class="table-header row">
+
+            <div class="col-sm-12 col-md-12 col-lg-4 mb-4">
+                <h2>Atendees</h2>
+            </div>
+
+        </div>
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Name Surname</th>
+                    <th>Number of Dependees</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for attendee in attendees %}
+                <tr>
+                    <td>{{attendee.guest.user.first_name}} {{attendee.guest.user.last_name}}</td>
+                    <td>{{attendee.numberOfDependees}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <div class="explanation  pb-5">
+        <div class="header h2 border rounded p-4">Explanation</div>
+        <div class="content">
+            <p class="border rounded p-4">{{event.explanation}}</p>
+        </div>
+    </div>
+
+</div>

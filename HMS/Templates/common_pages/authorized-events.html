@@ -1,0 +1,123 @@
+<div class="container py-5">
+
+
+
+
+    <div class="table-header row">
+
+        <div class="col-sm-9 col-md-9 col-lg-9 mb-4">
+            <h2>Event List</h2>
+        </div>
+        {% if role == "manager" or role == "admin"%}
+        <div class="col-sm-3 col-md-3 col-lg-3 mb-4">
+            <form action="" method="post">
+                <a href="{% url 'createEvent' %}" class="float-right btn btn-outline-success" type="submit">Create
+                    Event</a>
+            </form>
+        </div>
+        {% endif %}
+    </div>
+
+    <table class="table table-hover table-striped">
+        <thead class="bg-secondary rounded">
+            <tr>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <th>Type <input type="text" name="type" value="{{type}}"
+                            class="form-control border border-secondary"></th>
+                    <th>Location <input type="text" name="location" value="{{location}}"
+                            class="form-control border border-secondary"></th>
+                    <th>Starting Date <input type="date" name="fd" value="{{fd}}"
+                            class="form-control border border-secondary"></th>
+                    <th>End Date <input type="date" name="ed" value="{{ed}}"
+                            class="form-control border border-secondary"></th>
+                    <th colspan="3"><button type="submit" name="filter" class="btn btn-warning w-100">Filter</button>
+                    </th>
+                </form>
+            </tr>
+        </thead>
+        <tbody>
+            {% for event in events %}
+            <tr>
+                <td>{{ event.eventType }}</td>
+                <td>{{ event.location }}</td>
+                <td>{{ event.startDate }}</td>
+                <td>{{ event.endDate }}</td>
+                <td> <a href="{% url 'event-profile' event.id %}" class="btn btn-sm btn-info px-3">View</a></td>
+                {% if role == "manager" or role == "admin" %}
+                <td> <a href="{% url 'event-edit' event.id %}" class="btn btn-sm btn-primary px-3">Edit</a></td>
+                <td> <a href="{% url 'deleteEvent' event.id %}" class="btn btn-sm btn-danger px-3">Delete</a> </td>
+                {% endif %}
+                {% if role == 'guest' %}
+                <td>
+                    <form action="{% url 'events' %}" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" value="{{ event.id }}" name="id">
+                        <button type="submit" name="attend" class="btn btn-sm btn-primary px-3">Attend</button>
+                    </form>
+                </td>
+                {% endif %}
+
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+
+    {% if role == 'guest' %}
+    <div class="pt-3 border-top border-secondary">
+        <div class="table-header row">
+
+            <div class="col-sm-12 col-md-12 col-lg-4 mb-4">
+                <h2>List of my Events</h2>
+            </div>
+
+        </div>
+        <table class="table table-hover table-striped">
+            <thead class="bg-secondary rounded">
+                <tr>
+
+                    <th>Type</th>
+                    <th>Location</th>
+                    <th>Starting Date</th>
+                    <th>End Date</th>
+                    <th>Number Of Attendees</th>
+                    <th></th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for e in attendedEvents %}
+                <tr>
+                    <td>{{e.event.eventType}}</td>
+                    <td>{{e.event.location}}</td>
+                    <td>{{e.event.startDate}}</td>
+                    <td>{{e.event.endDate}}</td>
+                    <td>
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <input type="number" class="form-control w-50 d-inline" min='0'
+                                value="{{ e.numberOfDependees }}" name="id-text">
+                            <input type="hidden" value="{{e.id}}" name="id-2">
+                            <button type="submit" name="Save"
+                                class="btn btn-sm btn-outline-success px-3 d-inline">Save</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" value="{{ e.event.id }}" name="id">
+                            <button type="submit" name="remove" class="btn btn-sm btn-warning px-3">Remove</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+
+    </div>
+    {% endif %}
+
+
+</div>

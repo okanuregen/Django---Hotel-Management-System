@@ -1,0 +1,84 @@
+<div class="container clear-fix">
+    {{form.errors}}
+    {{form2.errors}}
+    {{form3.errors}}
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="row mt-5 clear-fix">
+
+            <div class="col-6 pr-3 border-right">
+
+                <div class="form-group pt-3">
+                    <label for="item-type"><b>username</b></label>
+                    <input type="text" class="form-control border border-secondary" id="id_username" name="username">
+                </div>
+
+                <div class="form-group pt-3">
+                    <label for="item-type"><b>First Name</b></label>
+                    <input type="text" class="form-control border border-secondary" id="id_first_name"
+                        name="first_name">
+                </div>
+
+                <div class="form-group pt-3">
+                    <label for="item-type"><b>Last Name</b></label>
+                    <input type="text" class="form-control border border-secondary" id="id_last_name" name="last_name">
+                </div>
+
+                <div class="form-group">
+                    <label for="item-quantity"><b>Email</b></label>
+                    <input type="email" class="form-control border border-secondary" id="id_email" name="email">
+                </div>
+
+            </div>
+
+            <div class="col-6 pl-3">
+
+                <div class="form-group pt-3">
+                    <label for="item-type"><b>Phone Number</b></label>
+                    <input type="tel" name="phoneNumber" pattern="[0-9]{10}" maxlength="10" id="id_phoneNumber"
+                        class="form-control border border-secondary" placeholder="5*********" required>
+                </div>
+
+                <div class="form-group pt-3">
+                    <label for="item-quantity"><b>Salary</b></label>
+                    <input type="number" step="any" class="form-control border border-secondary" id="id_salary"
+                        name="salary">
+                </div>
+
+                <div class="form-group pt-3">
+                    <label for="item-quantity"><b>Password</b></label>
+                    <input type="password" class="form-control border border-secondary" id="id_password1" value=""
+                        name="password1">
+                </div>
+
+                <div class="form-group">
+                    <label for="item-quantity"><b>Password Confirmation</b></label>
+                    <input type="password" class="form-control border border-secondary" id="id_password2" value=""
+                        name="password2">
+                </div>
+
+            </div>
+
+        </div>
+        <div class="role-input">
+            <label class="radio-inline mr-3 for=" id_ROLES_TYPES_0">
+                <input type="radio" name="ROLES_TYPES" value="manager" required id="id_ROLES_TYPES_0"> Manager
+            </label>
+
+            <label class="radio-inline mr-3 for=" id_ROLES_TYPES_1">
+                <input type="radio" name="ROLES_TYPES" value="receptionist" required id="id_ROLES_TYPES_1"> Receptionist
+            </label>
+
+            <label class="radio-inline mr-3 for=" id_ROLES_TYPES_2">
+                <input type="radio" name="ROLES_TYPES" value="staff" required id="id_ROLES_TYPES_2"> Staff
+            </label>
+
+
+        </div>
+        <div class="clear-fix mb-5 pb-5">
+            <button type="submit" name="submit" class="btn btn-success float-right">Add Employee</button>
+        </div>
+
+    </form>
+
+</div>

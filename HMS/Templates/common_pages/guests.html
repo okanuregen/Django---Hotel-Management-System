@@ -1,0 +1,137 @@
+<div class="container py-5">
+
+
+    <div class="table-header row">
+
+        <div class="col-sm-12 col-md-12 col-lg-5 mb-4">
+            <h2>Guest List</h2>
+            <span class="text-muted">This list include guests who has a booking between these days</span>
+        </div>
+
+
+        <div class="col-sm-12 col-md-12 col-lg-7">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="row">
+
+                    <div class="form-group col-4">
+                        <label for="example-date-input" class="col-form-label">First Date</label>
+                        <div class="">
+                            <input class="form-control" type="date"
+                                value="{{fd.year}}-{% if fd.month < 10 %}0{{fd.month}}{% else %}{{fd.month}}{% endif %}-{% if fd.day < 10 %}0{{fd.day}}{% else %}{{fd.day}}{% endif %}"
+                                name="f_day" id="f_day">
+                        </div>
+                    </div>
+
+                    <div class="form-group col-4">
+                        <label for="example-date-input" class="col-form-label">Last Date</label>
+                        <div class="">
+                            <input class="form-control" type="date"
+                                value="{{ld.year}}-{% if ld.month < 10 %}0{{ld.month}}{% else %}{{ld.month}}{% endif %}-{% if ld.day < 10 %}0{{ld.day}}{% else %}{{ld.day}}{% endif %}"
+                                name="l_day" id="l_day">
+                        </div>
+                    </div>
+
+                    <div class="col-4" style="margin-top:38px;">
+                        <button type="submit" class="btn btn-warning" name="filterDate">Filter</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+
+    </div>
+
+    <table class="table table-hover table-striped">
+        <thead class="bg-secondary rounded">
+            <tr>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <th>ID<input type="number" name="id" min="0" value="{{id}}"
+                            class="form-control border border-secondary">
+                    </th>
+                    <th>Name<input type="text" name="name" value="{{name}}"
+                            class="form-control border border-secondary"></th>
+                    <th>Email<input type="text" name="email" value="{{email}}"
+                            class="form-control border border-secondary"></th>
+                    <th>Phone Number<input type="number" name="number" min="0" value="{{number}}"
+                            class="form-control border border-secondary">
+                    </th>
+                    <th>Number of Bookings</th>
+                    <th>Total Day on Hotel</th>
+                    <th>Total Day for Last Booking</th>
+                    <th><button type="submit" name="filterGuest" class="btn btn-warning w-100">Filter</button></th>
+                </form>
+
+            </tr>
+
+
+        </thead>
+        <tbody>
+            {% for g in guests %}
+            <tr>
+                <td>{{g.user.id}}</td>
+                <td>{{g.user.first_name}} {{g.user.last_name}}</td>
+                <td>{{g.user.email}}</td>
+                <td>{{g.phoneNumber}}</td>
+
+                <td>{{g.numOfBooking}}</td>
+                <td>{{g.numOfDays}}</td>
+                <td>{{g.numOfLastBookingDays}}</td>
+
+                <td> <a href="{% url 'guest-profile' g.user.id %}" class="btn btn-primary w-100">View&nbsp;Guest</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+
+    <div class="top-10 pt-4 border-top border-secondary">
+        <div class="h3">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <input type="number" name="top" min="0" value="{{topLimit}}" class="d-inline rounded h4"
+                    style="width: 65px;">
+                People With The Most Booking
+            </form>
+
+        </div>
+        <table class="table table-hover table-striped">
+            <thead class="bg-secondary rounded">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Number of Bookings</th>
+                    <th>Total Day on Hotel</th>
+                    <th>Total Day for Last Booking</th>
+                    <th></th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+                {% for g in topList %}
+                <tr>
+                    <td>{{g.user.id}}</td>
+                    <td>{{g.user.first_name}} {{g.user.last_name}}</td>
+                    <td>{{g.user.email}}</td>
+                    <td>{{g.phoneNumber}}</td>
+
+                    <td>{{g.numOfBooking}}</td>
+                    <td>{{g.numOfDays}}</td>
+                    <td>{{g.numOfLastBookingDays}}</td>
+
+                    <td> <a href="{% url 'guest-profile' g.user.id %}"
+                            class="btn btn btn-primary w-100">View&nbsp;Guest</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+    </div>
+</div>

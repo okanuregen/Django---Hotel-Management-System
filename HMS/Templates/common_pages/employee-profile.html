@@ -1,0 +1,120 @@
+<div class="container">
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="row mt-5 clearfix">
+            <div class="col-6">
+
+
+                <div class="p-2 h4">
+                    <span>Name:</span>
+                    {% if employee.user.id != request.user.id %}
+                    <span class="font-weight-normal">{{employee.user.first_name}} </span>
+                    {% else %}
+                    <input type="text" class="form-control border border-secondary" id="id_first_name"
+                        value="{{employee.user.first_name}}" name="first_name">
+                    {% endif %}
+                </div>
+
+                <div class="p-2 h4">
+                    <span>Surname:</span>
+                    {% if employee.user.id != request.user.id %}
+                    <span class="font-weight-normal"> {{employee.user.last_name}}</span>
+                    {% else %}
+                    <input type="text" class="form-control border border-secondary" id="id_last_name"
+                        value="{{employee.user.last_name}}" name="last_name">
+                    {% endif %}
+                </div>
+
+
+
+                <br>
+
+                <div class="p-2 h4">
+                    <span>Email :</span>
+                    <span class="font-weight-normal">{{employee.user.email}}</span>
+                </div>
+
+                <br>
+
+                <div class="p-2 h4">
+                    <span>Creation Date:</span>
+                    <span class="font-weight-normal">{{employee.user.date_joined}}</span>
+                </div>
+
+            </div>
+
+            <div class="col-6">
+
+                <div class="p-2 h4">
+                    <span>Phone Number: </span>
+                    {% if employee.user.id != request.user.id %}
+
+                    <span class="font-weight-normal">{{employee.phoneNumber}}</span>
+                    {% else %}
+                    <input type="text" class="form-control border border-secondary" id="id_phoneNumber"
+                        value="{{employee.phoneNumber}}" name="phoneNumber">
+                    {% endif %}
+                </div>
+
+                <br>
+
+                <div class="p-2 h4">
+                    <span>Role :</span>
+                    <span class="font-weight-normal">{{employee.user.groups.first}}</span>
+                </div>
+
+                <br>
+
+                <div class="p-2 h4">
+                    <span>Salary:</span>
+                    <span class="font-weight-normal">{{employee.salary}}</span>
+                </div>
+
+            </div>
+        </div>
+        {% if employee.user.id == request.user.id %}
+        <button type="submit" name="submit" class="btn btn-success float-right">Save Changes</button>
+        {% endif %}
+        <br>
+    </form>
+    <br>
+
+    {% if role == 'staff' or request.user != employee.user %}
+    <div class="table-responsive my-5">
+        <div class="table-header row">
+
+            <div class="col-sm-12 col-md-12 col-lg-4 mb-4">
+                <h2>Task List</h2>
+            </div>
+
+        </div>
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Task ID</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for tasks in tasks %}
+                <tr>
+                    <td>{{tasks.id}}</td>
+                    <td>{{tasks.startTime}}</td>
+                    <td>{{tasks.endTime}}</td>
+                    <td>{{tasks.description}}</td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+    {% endif %}
+
+</div>

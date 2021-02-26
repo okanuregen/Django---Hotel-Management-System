@@ -1,0 +1,27 @@
+{% extends '../index.html' %}
+{% load static %}
+{% block context %}
+
+<div class="container py-5">
+  <div id="messages">
+    {% for m in messages %}
+
+    <div class="alert alert-info">
+      {{m}}
+    </div>
+
+    {% endfor %}
+  </div>
+
+  <form action="" method="POST">
+    {% csrf_token %}
+    <div class="form-floating">
+      <label for="floatingTextarea2">Explanation </label>
+      <textarea class="form-control" name="reqExp" placeholder="Leave your explanation here" id="floatingTextarea2"
+        style="height: 100px"></textarea>
+      <input type="hidden" name="bid" value="{{id}}">
+      <button type="submit" class="btn btn-outline-success btn-lg float-right" name="sendReq">Send Request</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

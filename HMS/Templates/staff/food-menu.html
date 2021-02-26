@@ -1,0 +1,77 @@
+{% extends '../index.html' %}
+
+{% block context %}
+
+<div class="container py-5">
+
+    <div class="table-responsive">
+        <div class="table-header row">
+
+            <div class="col-sm-12 col-md-12 col-lg-4 mb-4">
+                <h2>Menu</h2>
+            </div>
+
+        </div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+
+                    <th>Menu ID</th>
+                    <th>Menu Items</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for f in food_menu %}
+                <tr>
+                    <td>{{f.id}}</td>
+                    <td>{{f.menuItems}}</td>
+                    <td>{{f.startDate}}</td>
+                    <td>{{f.endDate}}</td>
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <td><input type="hidden" value="{{f.id}}" name="id"></td>
+                        <td> <a href="{% url 'food-menu-edit' f.id %}" class="btn btn-sm btn-info">Edit</a></td>
+                        <td> <a href="{% url 'deleteFoodMenu' f.id %}" class="btn btn-sm btn-danger px-3">Delete</a>
+                        </td>
+                    </form>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+
+        <div class="newFoodMenu my-5 border-top pt-3">
+            <h3>Add Menu </h3>
+            <form action="" method="POST">
+                {% csrf_token %}
+
+                <div class="form-group pt-3">
+                    <label for="menu_items"><b>Menu Items</b></label>
+                    <input type="text" required class="form-control border border-secondary" id="id_menu_items"
+                        name="menuItems">
+                </div>
+
+                <div class="form-group">
+                    <label for="first_date"><b>First Date</b></label>
+                    <input type="date" required class="form-control border border-secondary" id="id_first_date"
+                        name="startDate">
+                </div>
+
+                <div class="form-group">
+                    <label for="end_date"><b>End Date</b></label>
+                    <input type="date" required class="form-control border border-secondary" id="id_end_date"
+                        name="endDate">
+                </div>
+
+                <button type="submit" class="btn btn-success px-5 float-right mb-5" name="add">Add</button>
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}

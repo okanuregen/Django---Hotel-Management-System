@@ -1,0 +1,51 @@
+<div class="container clear-fix">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="row mt-5 clear-fix">
+
+            <div class="col-6 pr-3 border-right">
+
+                <div class="form-group pt-3">
+                    <label for="item-type"><b>First Name</b></label>
+                    <input type="text" class="form-control border border-secondary" id="id_first_name"
+                        value="{{user.first_name}}" name="first_name">
+                </div>
+
+                <div class="form-group pt-3">
+                    <label for="item-type"><b>Last Name</b></label>
+                    <input type="text" class="form-control border border-secondary" id="id_last_name" name="last_name"
+                        value="{{user.last_name}}">
+                </div>
+
+                <div class="form-group">
+                    <label for="item-quantity"><b>Email</b></label>
+                    <input type="email" class="form-control border border-secondary" id="id_email"
+                        value="{{user.email}}" name="email">
+                </div>
+
+            </div>
+
+            <div class="col-6 pl-3">
+
+                <div class="form-group pt-3">
+                    <label for="item-type"><b>Phone Number</b></label>
+                    <input type="text" class="form-control border border-secondary" id="id_phoneNumber"
+                        value="{{employee.phoneNumber}}" name="phoneNumber" maxlength="12">
+                </div>
+
+                <div class="form-group">
+                    <label for="item-quantity"><b>Salary</b></label>
+                    <input type="number" step="any" class="form-control border border-secondary" id="id_salary"
+                        value="{{employee.salary}}" name="salary">
+                </div>
+
+            </div>
+
+        </div>
+        <div class="clear-fix mb-5 pb-5">
+
+            <button type="submit" name="submit" class="btn btn-success float-right">Save Changes</button>
+        </div>
+    </form>
+
+</div>

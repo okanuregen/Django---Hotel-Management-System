@@ -1,0 +1,49 @@
+<div class="container shadow-lg my-3">
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Event Type</label>
+            <select class="form-control" name="eventType" required="" id="id_eventType">
+                <option value="" selected="">---------</option>
+
+                <option value="Movie">Movie</option>
+
+                <option value="Theater">Theater</option>
+
+                <option value="Conference">Conference</option>
+
+                <option value="Concert">Concert</option>
+
+                <option value="Entertainment">Entertainment</option>
+
+                <option value="Live Music">Live Music</option>
+
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Location</label>
+            <input type="text" class="form-control" name="location" maxlength="100" required="" id="id_location">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Start Date</label>
+            <input type="date" class="form-control" name="startDate" required="" id="id_startDate">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleFormControlInput1">End Date</label>
+            <input type="date" class="form-control" name="endDate" required="" id="id_endDate">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Explanation</label>
+            <textarea class="form-control" name="explanation" cols="40" rows="10" required=""
+                id="id_explanation"></textarea>
+        </div>
+
+
+        <button type="submit" class="btn btn-success w-100">Save</button>
+
+    </form>
+</div>

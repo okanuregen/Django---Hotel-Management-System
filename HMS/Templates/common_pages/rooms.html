@@ -1,0 +1,109 @@
+<div class="container py-5 clearfix">
+    <div id="messages">
+        {% for m in messages %}
+        <div class="alert alert-{{m.tags}}">
+            {{m}}
+        </div>
+        {% endfor %}
+    </div>
+    <div class="clearfix">
+        {% if role == "manager" or role == "admin" %}
+        <a href="{% url 'add-room' %}" class="btn btn-danger rounded float-right">Add Room <i
+                class="fas fa-plus"></i></a>
+        {% endif %}
+    </div>
+
+    <div class="table-header row mt-3 clearfix">
+
+        <div class="col-sm-12 col-md-12 col-lg-6 mb-4">
+            <h2>Room List</h2>
+            <span class="text-muted">Filter available room with time interval</span>
+        </div>
+
+
+        <div class="col-sm-12 col-md-12 col-lg-6">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="row">
+
+                    <div class="form-group col-4">
+                        <label for="example-date-input" class="col-form-label">First Date</label>
+                        <div class="">
+                            <input class="form-control" type="date" name="fd" value="{{fd}}" id="example-date-input">
+                        </div>
+                    </div>
+
+                    <div class="form-group col-4">
+                        <label for="example-date-input" class="col-form-label">Last Date</label>
+                        <div class="">
+                            <input class="form-control" type="date" name="ld" value="{{ld}}" id="example-date-input">
+                        </div>
+                    </div>
+
+                    <div class="col-4" style="margin-top:38px;">
+                        <button type="submit" name="dateFilter" class="btn btn-warning w-100">Filter</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+
+    </div>
+
+    <table class="table table-hover table-striped">
+        <thead class="bg-secondary rounded">
+            <tr>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <th>Room Number<input type="number" name="number" value="{{number}}"
+                            class="form-control border border-secondary"></th>
+                    <th>Capacity<input type="number" name="capacity" value="{{capacity}}"
+                            class="form-control border border-secondary"></th>
+                    <th>Number of Beds<input type="number" name="nob" value="{{nob}}"
+                            class="form-control border border-secondary"></th>
+                    <th>Room Type<input type="text" name="type" value="{{type}}"
+                            class="form-control border border-secondary"></th>
+                    <th>Price <input type="number" step="0.01" name="price" value="{{price}}"
+                            class="form-control border border-secondary"></th>
+                    <th colspan="2"><button type="submit" name="filter" class="btn btn-warning w-100">Filter</button>
+                    </th>
+                </form>
+
+            </tr>
+
+
+        </thead>
+        <tbody>
+            {% for room in rooms %}
+            <tr>
+                <td>{{ room.number }}</td>
+                <td>{{ room.capacity }}</td>
+                <td>{{ room.numberOfBeds }}</td>
+                <td>{{ room.roomType }}</td>
+                <td>{{ room.price }}</td>
+
+                {% if role != "guest" %}
+                <td> <a href="{% url 'room-profile' room.number %}" class="btn btn-info btn-sm w-100">View</a>
+                </td>
+                {% if role == 'manager' or role == 'admin' %}<td> <a href="{% url 'room-edit' room.number %}"
+                        class="btn btn-sm btn-primary w-100">Edit&nbsp;Room</a></td> {% endif %}
+                {% endif %}
+                {% if role == "guest" or role == "receptionist" %}
+                <td>
+                    <form action="{% url 'booking-make' %}" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" value="{{ room }}" name="roomid">
+                        <input type="date" value="{{fd}}" name="fd" class="d-none">
+                        <input type="date" value="{{ld}}" name="ld" class="d-none">
+                        <button type="submit" name="book" id="book" class="btn btn-sm btn-primary px-3">Book</button>
+                    </form>
+                </td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+
+</div>

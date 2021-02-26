@@ -1,0 +1,31 @@
+{% extends '../index.html' %}
+
+{% block context %}
+{% for message in messages %}
+<div class="alert alert-danger" role="alert">
+    {{message}}
+</div>
+{% endfor %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="row justify-content-center py-5">
+                <label class="input-group-lg" for="verification">Please Enter The Code We Sent to your Email</label>
+            </div>
+            <div class="row justify-content-center py-5">
+                <input class="form-control form-control-lg" type="hidden" placeholder="Verification" id="verification"
+                    name="tempCode" value="{{code}}">
+                <input class="form-control form-control-lg" type="text" placeholder="Verification" id="verification"
+                    name="realCode">
+            </div>
+            <div class="row justify-content-center py-5">
+                <button class="btn btn-lg btn-success py-2" name="verify" type="submit">Verify</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+{% endblock %}
