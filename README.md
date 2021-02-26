@@ -1,1 +1,1 @@
-# Django---Hotel-Managment-System
+# Django---Hotel-Management-System
