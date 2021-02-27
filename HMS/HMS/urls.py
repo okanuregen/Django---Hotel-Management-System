@@ -18,11 +18,6 @@ from django.urls import path
 from accounts.views import *
 from room.views import *
 from hotel.views import *
-# from hotel.views import food_menu_edit, home, employees, events, guests, bookings, rooms, room_services, announcements, refunds, storage, food_menu, tasks, current_room_services, request_refund, event_profile, event_edit, add_room, employee_details, employee_details_edit, guest_edit, guest_profile, room_profile, room_edit, error, booking_make, payment, verify, deleteStorage, deleteFoodMenu, createEvent, deleteEvent, deleteAnnouncement, deleteBooking, completeTask
-
-
-# from accounts.views import register_page, login_page, logout_user, add_employee
-
 
 urlpatterns = [
     path('admin/', admin.site.urls),
