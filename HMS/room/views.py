@@ -1,3 +1,4 @@
+# imports
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 
@@ -15,7 +16,7 @@ from accounts.models import *
 from room.models import *
 from hotel.models import *
 from .forms import *
-# Create your views here.
+
 
 
 @ login_required(login_url='login')

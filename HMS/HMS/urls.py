@@ -4,6 +4,8 @@ The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.1/topics/http/urls/
 Examples:
 Function views
+
+
     1. Add an import:  from my_app import views
     2. Add a URL to urlpatterns:  path('', views.home, name='home')
 Class-based views
@@ -45,8 +47,6 @@ urlpatterns = [
     path('event-edit/<str:pk>/', event_edit, name="event-edit"),
     path('add-room/', add_room, name="add-room"),
 
-
-
     path('employee-profile/<str:pk>/', employee_details, name="employee-profile"),
     path('employee-edit/<str:pk>/', employee_details_edit, name="employee-edit"),
     path('employee-add/', add_employee, name="add-employee"),
@@ -56,7 +56,6 @@ urlpatterns = [
     path('room-profile/<str:id>/', room_profile, name="room-profile"),
     path('room-edit/<str:pk>/', room_edit, name="room-edit"),
     path('error/', error, name="error"),
-
 
     path('booking-make/', booking_make, name="booking-make"),
     path('payment/', payment, name="payment"),
