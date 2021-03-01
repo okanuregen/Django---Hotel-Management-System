@@ -1,7 +1,7 @@
 # Django - Hotel Management System
 * Requirement Analysis Document - System Design Document - Object Design Document - Mockups - Class Diagram - ER Diagram are in the "Documents" Folder
 
-* It is hotel management system which have 5 different user types: <br>
+* It is hotel management system which has 5 different user types: <br>
 Admin - Manager - Receptionist - Staff - Guest  (Each of the types have different permission and functionality.) 
 
 * There are some screenshots of the program on "Screenshots" folder.
@@ -79,16 +79,16 @@ python3 manage.py runserver
 * This will work if correctly set up.
 
 ## Notes:
-#### Note 1: In the program, there are some payment page. No need to enter real credit-card informations. The payment page just for the system, it doesnt work. However; after these page, a verification code is sent the user mail address.
+#### Note 1: In the program, there are some payment page. No need to enter real credit-card informations. The payment page is just for the system, it doesnt work. However; after this page, a verification code is sent the user email address.
 
 
 #### Note 2: You can only sign up as a guest to the system. In order to add employee (Manager - Receptionist - Staff): 
 * Login in to the system with username: "admin" and password : "admin123"
 * Go the employee page on options in navbar.
 * Click "Add New Employee" button, fill the form and send it.
-* You will see the success message. After then, you can use that employee to enter the system 
+* You will see the success message. Then, you can use that employee to enter the system 
 
 
-#### Note 3: For the mail system works (In some case system sends e-mails):
+#### Note 3: For the email system (In some cases system sends e-mails):
 * Go to the HMS/setting.py
-* Under of the file mail settings are as command lines. Put out of them from command and change the setting according to your mail address
+* Under the settings file you can find the email settings, uncomment them in order to change the settings and put the email address you want to use to receive the rmails from the system.
